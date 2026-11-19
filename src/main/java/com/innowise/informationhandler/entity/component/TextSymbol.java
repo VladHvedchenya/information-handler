@@ -4,7 +4,7 @@ import com.innowise.informationhandler.entity.TextComponentType;
 
 import java.util.List;
 
-public class TextSymbol implements TextComponent{
+public final class TextSymbol implements TextComponent {
     private final int codePoint;
 
     public TextSymbol(int codePoint) {
@@ -28,5 +28,27 @@ public class TextSymbol implements TextComponent{
 
     public int getCodePoint(){
         return codePoint;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+
+        if (!(other instanceof TextSymbol symbol)) {
+            return false;
+        }
+        return codePoint == symbol.codePoint;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(codePoint);
+    }
+
+    @Override
+    public String toString() {
+        return "TextSymbol{codePoint=" + codePoint + '}';
     }
 }

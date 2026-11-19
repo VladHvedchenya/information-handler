@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class TextComposite implements TextComponent {
+public final class TextComposite implements TextComponent {
     private final TextComponentType type;
     private final List<TextComponent> children;
 
@@ -52,5 +52,27 @@ public class TextComposite implements TextComponent {
         }
 
         return false;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+
+        if (!(other instanceof TextComposite composite)) {
+            return false;
+        }
+        return type == composite.type && children.equals(composite.children);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, children);
+    }
+
+    @Override
+    public String toString() {
+        return "TextComposite{type=" + type + ", children=" + children + '}';
     }
 }

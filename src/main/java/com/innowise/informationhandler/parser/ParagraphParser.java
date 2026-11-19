@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class ParagraphParser implements TextParser {
     private final TextParser sentenceParser;
-    private static final String SENTENCE_REGEX = "(?sU)(?<sentence>\\S.*?(?:[.!?]+(?=\\s|\\z)|\\z))|\\s";
+    private static final String SENTENCE_REGEX = "(?sU)(?<sentence>(?=\\S).*?(?:[.!?]+(?=\\s|\\z)|\\z))|\\s";
 
     private static final Pattern SENTENCE_PATTERN = Pattern.compile(SENTENCE_REGEX);
 
